@@ -50,7 +50,7 @@ export default function Home() {
     // Add more projects as needed
   ];
 
-  const scrollPosition = useRef(window.pageYOffset);
+  const scrollPosition = useRef(typeof window !== 'undefined' ? window.pageYOffset : 0);
 
   useEffect(() => {
     if ('scrollRestoration' in history) {
@@ -90,7 +90,7 @@ export default function Home() {
       <div className={styles.root}>
         <div className={styles.titleContainer}>
           <h1 className={titleFont.className}>
-            <span className={`${styles.title} ${styles.titleAnimation} ${styles.typing}`}>Hey, I'm Nelson Gong</span>
+            <span className={`${styles.title} ${styles.titleAnimation} ${styles.typing}`}>Hey, I&apos;m Nelson Gong</span>
           </h1>
         </div>
 
