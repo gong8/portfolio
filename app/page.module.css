@@ -1,0 +1,153 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-left: 6rem;
+    padding-right: 6rem;
+
+}
+
+.title {
+  font-size: 4rem;
+  margin-top: 10rem;
+    letter-spacing: 0.05em;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+
+.titleAnimation {
+  border-right: .15em solid #6495ED;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  display: inline-block;
+  animation: blink-caret 1s steps(1) infinite;
+}
+
+@keyframes blink-caret {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: #6495ED; }
+}
+
+
+.typing {
+  animation:
+          typing 1s steps(50, end) forwards,
+          blink-caret 1s steps(1) infinite;
+}
+
+
+@keyframes slide-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-20em); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1;
+  transform: translateY(-18em);}
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15rem;
+  animation: slide-up 1s 1.75s forwards;  /* The slide-up animation will start after 1.75 seconds */
+}
+
+.descriptionContainer {
+    width: 100%;
+    margin-bottom: 3em;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5em;
+    outline: white solid 1px;
+    animation: fade-in 1s 2.5s forwards; /* The slide-up animation will start after 2.5 seconds */
+}
+
+.description {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.portfolioContainer {
+    width: 100%;
+    margin-bottom: 3em;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5em;
+    outline: white solid 1px;
+    animation: fade-in 1s 3.5s forwards; /* The slide-up animation will start after 2.5 seconds */
+}
+
+.portfolio {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.portfolioTitle {
+    font-size: 3rem;
+    margin-bottom: 1em;
+
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    border: 1px solid white;
+    margin-bottom: 1em;
+}
+
+.card img {
+    width: 33%;
+    margin-right: 1em;
+}
+
+.card h3, .card p, .card a {
+    flex: 1;
+}
+
+.contactContainer {
+    width: 100%;
+    margin-bottom: 3em;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5em;
+    outline: white solid 1px;
+    animation: fade-in 1s 4.5s forwards; /* The slide-up animation will start after 2.5 seconds */
+}
+
+.contact {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.contactTitle {
+    font-size: 3rem;
+    margin-bottom: 1em;
+
+}
