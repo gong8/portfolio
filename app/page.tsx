@@ -6,6 +6,7 @@ import localFont from 'next/font/local'
 import { useEffect, useRef } from 'react';
 import Router from 'next/router';
 
+
 const titleFont = localFont({ src: '../public/MonumentExtended-Regular.otf' })
 const mainFont = localFont({ src: '../public/MonumentExtended-Regular.otf' })
 const inter = Inter({ subsets: ['latin'] })
