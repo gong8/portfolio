@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     secure: false,
     auth: {
       user: process.env.EMAIL_USERNAME,
-      pass: process.env.EMAIL_PASSWORD,
+      pass: process.env.EMAIL_PASSWORD || "",
     },
   })
 

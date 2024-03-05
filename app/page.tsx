@@ -12,7 +12,7 @@ const mainFont = localFont({ src: '../public/MonumentExtended-Regular.otf' })
 const inter = Inter({ subsets: ['latin'] })
 const inconsolata = Inconsolata({ subsets: ['latin'] })
 
-
+const emailDeny = true;
 
 interface PortfolioItemProps {
   title: string;
@@ -97,6 +97,8 @@ export default function Home() {
 
   async function handleSubmit(event: any) {
     event.preventDefault()
+
+    if (emailDeny) return;
 
     const formData = new FormData(event.target)
 
