@@ -3,7 +3,7 @@ import Image from "next/image";
 import {Inconsolata, Inter} from 'next/font/google'
 import styles from "./page.module.css";
 import localFont from 'next/font/local'
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Router from 'next/router';
 
 
@@ -12,6 +12,8 @@ const mainFont = localFont({ src: '../public/MonumentExtended-Regular.otf' })
 const inter = Inter({ subsets: ['latin'] })
 const inconsolata = Inconsolata({ subsets: ['latin'] })
 
+
+
 interface PortfolioItemProps {
   title: string;
   description: string;
@@ -19,35 +21,31 @@ interface PortfolioItemProps {
   projectUrl: string;
 }
 
-const PortfolioItem: React.FC<PortfolioItemProps> = ({ title, description, imageUrl, projectUrl }) => {
-  return (
-    <div className={styles.card}>
-      <a href={projectUrl}>
-        <div className={styles.card}>
-          <Image src={imageUrl} alt={title} width={500} height={300} />
-          <h3>{title}</h3>
-          <p>{description}</p>
-        </div>
-      </a>
 
-    </div>
-  );
-}
+
 
 export default function Home() {
+
   const projects = [
     {
+      title: 'Function Calculator',
+      description: 'step-by-step derivative calculator and graphing tool',
+      imageUrl: '/function-calc.png',
+      projectUrl: 'https://function-calc.vercel.app/',
+    },
+    {
       title: 'Worduel',
-      description: '2-player version of Wordle.',
+      description: 'two-player version of Wordle',
       imageUrl: '/worduel.png',
       projectUrl: 'https://gong8.github.io/worduel/',
     },
     {
       title: 'Sobriety',
-      description: 'a chess bot',
+      description: 'a simple chess bot, with an interactive board and capability to import/export games',
       imageUrl: '/sobriety.png',
       projectUrl: 'https://myst-6.github.io/sobriety/',
     },
+
     // Add more projects as needed
   ];
 
@@ -77,13 +75,48 @@ export default function Home() {
   // @ts-ignore
   function PortfolioItem({ title, description, imageUrl, projectUrl }) {
     return (
-      <div className={styles.card}>
-        <Image src={imageUrl} alt={title} width={500} height={300} />
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <a href={projectUrl}>View Project</a>
-      </div>
+
+      <a href={projectUrl}>
+          <div className={styles.card}>
+
+            <Image src={imageUrl} alt={title} width={500} height={300} objectFit="cover"/>
+            <div className={styles.projectInfo}>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </div>
+
+
+          </div>
+      </a>
+
     );
+  }
+
+  const [mailSent, setMailSent] = useState(false);
+  const [mailError, setMailError] = useState(false);
+
+  async function handleSubmit(event: any) {
+    event.preventDefault()
+
+    const formData = new FormData(event.target)
+
+    const response = await fetch('/api/sendEmail', {
+      method: 'POST',
+      body: JSON.stringify(Object.fromEntries(formData)),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    const json = await response.json();
+
+    if (json.status == 200) {
+      setMailSent(true);
+      setTimeout(() => setMailSent(false), 1000);
+    } else {
+      setMailError(true);
+      setTimeout(() => setMailError(false), 1000);
+    }
   }
 
   return (
@@ -126,9 +159,26 @@ export default function Home() {
           <h2 className={styles.contactTitle}>
             Contact Me
           </h2>
-          <p className={styles.contact}>
-            call me maybe...
-          </p>
+          <div className={styles.contact}>
+            <form onSubmit={handleSubmit} className={`${styles.form} ${mailSent ? styles.mailSent : ''} ${mailError ? styles.mailError : ''}`}>
+              <label className={styles.label}>
+                Your Email:
+                <input type="email" name="from" required className={styles.input}/>
+              </label>
+              <br/>
+              <label className={styles.label}>
+                Subject:
+                <input type="text" name="subject" required className={styles.input}/>
+              </label>
+              <br/>
+              <label className={styles.label}>
+                Message:
+                <textarea name="message" required className={styles.textarea}/>
+              </label>
+              <br/>
+              <button type="submit" className={styles.button}>Send</button>
+            </form>
+          </div>
         </div>
       </div>
     </main>
