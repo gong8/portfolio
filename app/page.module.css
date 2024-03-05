@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
+  padding: 3rem;
   min-height: 100vh;
 }
 
@@ -90,6 +90,7 @@
 }
 
 .portfolioContainer {
+    margin-left: 0;
     width: 100%;
     margin-bottom: 3em;
     opacity: 0;
@@ -102,6 +103,8 @@
 }
 
 .portfolio {
+    margin: 1em;
+    width: 100%;
     font-size: 2rem;
     text-align: center;
 }
@@ -115,20 +118,38 @@
 .card {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 1em;
+    align-items: flex-start; /* Align the content to the top */
     border: 1px solid white;
+    width: 100%;
     margin-bottom: 1em;
+    padding: 0;
 }
 
 .card img {
     width: 33%;
-    margin-right: 1em;
+    height: 33%;
+    margin-right: 0.5em;
     border: 1px solid white;
 }
 
 .card h3, .card p, .card a {
     flex: 1;
+    padding: 0;
+    border: none;
+}
+
+.card h3 {
+
+    font-size: 4rem;
+    text-align: left;
+    margin-bottom: 0.2em;
+
+}
+
+.card p {
+
+    font-size: 1.5rem;
+    text-align: left;
 }
 
 .contactContainer {
@@ -152,5 +173,77 @@
     font-size: 3rem;
     margin-bottom: 1em;
 
+}
+
+.projectInfo {
+    padding: 1em;
+    justify-content: center;
+    align-items: normal;
+    flex-grow: 1;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 1.5em;
+    outline: white solid 1px;
+
+}
+
+.label {
+    font-size: 1.2em;
+    color: white;
+    width: 100%;
+    padding: 0.5em;
+}
+
+.input, .textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    background-color: transparent;
+
+}
+
+.textarea {
+    height: 100px;
+}
+
+.button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: white solid 1px;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: white;
+    background-color: transparent;
+}
+
+.button:hover {
+    background-color: #0051bb;
+}
+
+@keyframes flash-green {
+    0% { outline-color: white; }
+    50% { outline-color: limegreen; outline-width: 0.3em; }
+    100% { outline-color: white; }
+}
+
+@keyframes flash-red {
+    0% { outline-color: white; }
+    50% { outline-color: indianred; outline-width: 0.3em; }
+    100% { outline-color: white; }
+}
+
+.mailSent {
+    animation: flash-green 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.mailError {
+    animation: flash-red 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
