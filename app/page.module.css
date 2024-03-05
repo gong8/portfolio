@@ -99,7 +99,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5em;
+    padding: 5em 5em 3em 5em;
     outline: white solid 1px;
     animation: fade-in 1s 3.5s forwards; /* The slide-up animation will start after 2.5 seconds */
 }
@@ -113,7 +113,7 @@
 
 .portfolioTitle {
     font-size: 3rem;
-    margin-bottom: 1em;
+    margin-bottom: 0;
 
 }
 
@@ -123,7 +123,7 @@
     align-items: flex-start; /* Align the content to the top */
     border: 1px solid white;
     width: 100%;
-    margin-bottom: 1em;
+    margin-top: 1em;
     padding: 0;
 }
 
@@ -195,6 +195,7 @@
 }
 
 .label {
+    text-align: left;
     font-size: 1.2em;
     color: white;
     width: 100%;
@@ -218,6 +219,8 @@
 }
 
 .button {
+    height: 2em;
+    width: 3.5em;
     padding: 10px 20px;
     border-radius: 5px;
     border: white solid 1px;
@@ -226,10 +229,13 @@
     font-family: 'inconsolata', 'monospace';
     color: white;
     background-color: transparent;
+    transition: all 0.2s ease;
 }
 
-.button:hover {
-    background-color: #0051bb;
+.button:not(.loading):hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0.5em rgba(255, 255, 255, 1);
+
 }
 
 @keyframes flash-green {
@@ -258,11 +264,11 @@
 }
 
 .button.loading {
-    border: 2px solid #f3f3f3;
-    border-top: 2px solid #3498db;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid transparent;
     border-radius: 50%;
-    width: 12px;
-    height: 12px;
+    width: 2em;
+    height: 2em;
     animation: spin 2s linear infinite;
 }
 

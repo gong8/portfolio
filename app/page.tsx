@@ -112,7 +112,14 @@ export default function Home() {
     })
 
     const json = await response.json();
-    setMailLoading(false);
+
+    function delayLoading() {
+      setMailLoading(false);
+    };
+
+    setTimeout(delayLoading, 1000);
+
+
     if (json.status == 200) {
       setMailSent(true);
       setTimeout(() => setMailSent(false), 1000);
