@@ -12,7 +12,7 @@ const mainFont = localFont({ src: '../public/MonumentExtended-Regular.otf' })
 const inter = Inter({ subsets: ['latin'] })
 const inconsolata = Inconsolata({ subsets: ['latin'] })
 
-const emailDeny = true;
+
 
 interface PortfolioItemProps {
   title: string;
@@ -94,12 +94,13 @@ export default function Home() {
 
   const [mailSent, setMailSent] = useState(false);
   const [mailError, setMailError] = useState(false);
+  const [mailLoading, setMailLoading] = useState(false);
+
 
   async function handleSubmit(event: any) {
     event.preventDefault()
 
-    if (emailDeny) return;
-
+    setMailLoading(true);
     const formData = new FormData(event.target)
 
     const response = await fetch('/api/sendEmail', {
@@ -111,7 +112,7 @@ export default function Home() {
     })
 
     const json = await response.json();
-
+    setMailLoading(false);
     if (json.status == 200) {
       setMailSent(true);
       setTimeout(() => setMailSent(false), 1000);
@@ -178,7 +179,13 @@ export default function Home() {
                 <textarea name="message" required className={styles.textarea}/>
               </label>
               <br/>
-              <button type="submit" className={styles.button}>Send</button>
+              <button
+                className={`${styles.button} ${mailLoading ? styles.loading : ''}`}
+                type="submit"
+                disabled={mailLoading}
+              >
+                {mailLoading ? '' : 'Send'}
+              </button>
             </form>
           </div>
         </div>

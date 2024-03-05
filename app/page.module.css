@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
+
 .main {
   display: flex;
   flex-direction: column;
@@ -200,17 +202,19 @@
 }
 
 .input, .textarea {
+    margin-top: 0.5em;
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 1em;
     background-color: transparent;
+    font-family: 'inconsolata', 'monospace';
 
 }
 
 .textarea {
-    height: 100px;
+    height: 8em;
 }
 
 .button {
@@ -219,6 +223,7 @@
     border: white solid 1px;
     font-size: 1.2em;
     cursor: pointer;
+    font-family: 'inconsolata', 'monospace';
     color: white;
     background-color: transparent;
 }
@@ -246,4 +251,19 @@
 .mailError {
     animation: flash-red 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.button.loading {
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    animation: spin 2s linear infinite;
+}
+
 

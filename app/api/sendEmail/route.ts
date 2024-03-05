@@ -1,6 +1,7 @@
 
 import nodemailer from 'nodemailer'
 
+const denyEmail = false;
 export async function POST(request: Request) {
   const { from, subject, message } = await request.json()
 
@@ -22,10 +23,11 @@ export async function POST(request: Request) {
   }
 
   try {
+    if (denyEmail) throw new Error();
     await transporter.verify();
     const response = await transporter.sendMail(mailOptions);
     return Response.json({ status: 200, statusText: JSON.stringify(response) })
   } catch (error) {
-    return Response.json( { status: 500, statusText: JSON.stringify(error) })
+    return Response.json( { status: 500, statusText: JSON.stringify(error) + process.env.EMAIL_PASSWORD })
   }
 }
