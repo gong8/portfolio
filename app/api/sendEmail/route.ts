@@ -28,6 +28,6 @@ export async function POST(request: Request) {
     const response = await transporter.sendMail(mailOptions);
     return Response.json({ status: 200, statusText: JSON.stringify(response) })
   } catch (error) {
-    return Response.json( { status: 500, statusText: JSON.stringify(error) + process.env.EMAIL_PASSWORD + (denyEmail? "Emails are disabled" : "Emails are enabled") })
+    return Response.json( { status: 500, statusText: JSON.stringify(error) + " " + (denyEmail? "Emails are disabled" : "Emails are enabled") })
   }
 }
