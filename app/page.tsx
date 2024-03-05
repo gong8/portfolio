@@ -117,7 +117,7 @@ export default function Home() {
       setMailLoading(false);
     };
 
-    setTimeout(delayLoading, 1000);
+    setTimeout(delayLoading, 0);
 
 
     if (json.status == 200) {
