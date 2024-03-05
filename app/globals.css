@@ -126,3 +126,6 @@ body {
   animation: gradient-wave 5s ease infinite;
 }
 
+html {
+  scroll-behavior: smooth;
+}
