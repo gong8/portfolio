@@ -17,7 +17,7 @@
     min-height: 100vh;
     padding-left: 6rem;
     padding-right: 6rem;
-
+    border-radius: 50px;
 }
 
 .title {
@@ -75,6 +75,7 @@
 }
 
 .descriptionContainer {
+    border-radius: 12px;
     width: 100%;
     margin-bottom: 3em;
     opacity: 0;
@@ -82,16 +83,20 @@
     flex-direction: column;
     align-items: center;
     padding: 5em;
-    outline: white solid 1px;
+    /*outline: white solid 1px;*/
     animation: fade-in 1s 2.5s forwards; /* The slide-up animation will start after 2.5 seconds */
+    background-color: rgba(255, 255, 255, 0.08);
+
 }
 
 .description {
     font-size: 2rem;
     text-align: center;
+    color: white;
 }
 
 .portfolioContainer {
+    border-radius: 12px;
     margin-left: 0;
     width: 100%;
     margin-bottom: 3em;
@@ -100,7 +105,8 @@
     flex-direction: column;
     align-items: center;
     padding: 5em 5em 3em 5em;
-    outline: white solid 1px;
+    /*outline: white solid 1px;*/
+    background-color: rgba(255, 255, 255, 0.08);
     animation: fade-in 1s 3.5s forwards; /* The slide-up animation will start after 2.5 seconds */
 }
 
@@ -155,6 +161,8 @@
 }
 
 .contactContainer {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
     width: 100%;
     margin-bottom: 3em;
     opacity: 0;
@@ -162,11 +170,12 @@
     flex-direction: column;
     align-items: center;
     padding: 5em;
-    outline: white solid 1px;
+    /*outline: white solid 1px;*/
     animation: fade-in 1s 4.5s forwards; /* The slide-up animation will start after 2.5 seconds */
 }
 
 .contact {
+    border-radius: 12px;
     font-size: 2rem;
     text-align: center;
 }
@@ -185,6 +194,7 @@
 }
 
 .form {
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -206,7 +216,7 @@
     margin-top: 0.5em;
     width: 100%;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 12px;
     border: 1px solid #ccc;
     font-size: 0.8em;
     background-color: transparent;
@@ -222,7 +232,7 @@
     height: 2em;
     width: 3.5em;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 12px;
     border: white solid 1px;
     font-size: 1.2em;
     cursor: pointer;
